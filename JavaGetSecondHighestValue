@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+
+public class JavaGetSecondHighestValue {
+    public static void main(String args[]) {
+        System.out.println("Example for Java Collection to find second highest value");
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("Jhon", "Manager", 1000.45f));
+        employees.add(new Employee("Jack", "Devloper", 500.45f));
+        employees.add(new Employee("Ron", "Devloper", 510.45f));
+        employees.add(new Employee("Cara", "Sr. Devloper", 710.45f));
+
+        Optional<Employee> secondHighestEmployee = employees.stream()
+                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).limit(2).skip(1).findFirst();
+        secondHighestEmployee.ifPresent(employee -> {
+            System.out.print("Second Highest Salaries Employee: " + employee);
+        });
+    }
+
+    public static class Employee {
+        private String name;
+        private String designation;
+        private float salary;
+
+        public Employee(String name, String designation, float salary) {
+            this.designation = designation;
+            this.name = name;
+            this.salary = salary;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public void setDesignation(String designation) {
+            this.designation = designation;
+        }
+
+        public String getDesignation() {
+            return this.designation;
+        }
+
+        public void setSalary(float salary) {
+            this.salary = salary;
+        }
+
+        public float getSalary() {
+            return this.salary;
+        }
+
+        @Override
+        public String toString() {
+            return new StringBuilder().append("{").append("Name: " + this.getName()).append(", ")
+                    .append("Designation: " + this.getDesignation()).append(", ").append("Salary: " + this.getSalary())
+                    .append("}").toString();
+        }
+
+    }
+}
