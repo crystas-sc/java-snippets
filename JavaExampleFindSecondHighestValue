@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class JavaGetSecondHighestValue {
+public class JavaExampleFindSecondHighestValue {
     public static void main(String args[]) {
         System.out.println("Example for Java Collection Find second highest value");
         List<Employee> employees = new ArrayList<>();
@@ -12,7 +12,7 @@ public class JavaGetSecondHighestValue {
         employees.add(new Employee("Ron", "Developer", 510.45f));
         employees.add(new Employee("Cara", "Sr. Developer", 710.45f));
 
-        Optional<Employee> secondHighestEmployee = new JavaGetSecondHighestValue().getSecondHighestSalariedEmployee(employees);
+        Optional<Employee> secondHighestEmployee = new JavaExampleFindSecondHighestValue().getSecondHighestSalariedEmployee(employees);
         secondHighestEmployee.ifPresentOrElse(employee -> {
             System.out.print("Second Highest Salaries Employee: " + employee);
         }, () -> System.out.print("List doesn't have enough values"));
