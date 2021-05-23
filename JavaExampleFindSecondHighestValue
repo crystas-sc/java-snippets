@@ -3,20 +3,24 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class JavaExampleFindSecondHighestValue {
+public class JavaGetSecondHighestValue {
     public static void main(String args[]) {
-        System.out.println("Example for Java Collection to find second highest value");
+        System.out.println("Example for Java Collection Find second highest value");
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee("Jhon", "Manager", 1000.45f));
-        employees.add(new Employee("Jack", "Devloper", 500.45f));
-        employees.add(new Employee("Ron", "Devloper", 510.45f));
+        employees.add(new Employee("Jack", "Developer", 500.45f));
+        employees.add(new Employee("Ron", "Developer", 510.45f));
         employees.add(new Employee("Cara", "Sr. Devloper", 710.45f));
 
-        Optional<Employee> secondHighestEmployee = employees.stream()
-                .sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).limit(2).skip(1).findFirst();
-        secondHighestEmployee.ifPresent(employee -> {
+        Optional<Employee> secondHighestEmployee = new JavaGetSecondHighestValue().getSecondHighestSalariedEmployee(employees);
+        secondHighestEmployee.ifPresentOrElse(employee -> {
             System.out.print("Second Highest Salaries Employee: " + employee);
-        });
+        }, () -> System.out.print("List doesn't have enough values"));
+    }
+
+    public Optional<Employee> getSecondHighestSalariedEmployee(List<Employee> employees){
+        return employees.stream()
+        .sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).limit(2).skip(1).findFirst();
     }
 
     public static class Employee {
