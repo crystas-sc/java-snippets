@@ -10,7 +10,7 @@ public class JavaGetSecondHighestValue {
         employees.add(new Employee("Jhon", "Manager", 1000.45f));
         employees.add(new Employee("Jack", "Developer", 500.45f));
         employees.add(new Employee("Ron", "Developer", 510.45f));
-        employees.add(new Employee("Cara", "Sr. Devloper", 710.45f));
+        employees.add(new Employee("Cara", "Sr. Developer", 710.45f));
 
         Optional<Employee> secondHighestEmployee = new JavaGetSecondHighestValue().getSecondHighestSalariedEmployee(employees);
         secondHighestEmployee.ifPresentOrElse(employee -> {
