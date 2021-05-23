@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-public class JavaGetSecondHighestValue {
+public class JavaExampleFindSecondHighestValue {
     public static void main(String args[]) {
         System.out.println("Example for Java Collection to find second highest value");
         List<Employee> employees = new ArrayList<>();
